@@ -1,0 +1,29 @@
+{
+  "name": "loan-widget",
+  "version": "0.0.1",
+  "description": "Calculating monthly rate for the loan criteria.",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BirgitPohl/code-challenge-loan-widget.git"
+  },
+  "keywords": [
+    "loan",
+    "fintech",
+    "widget",
+    "vuejs",
+    "code-challenge"
+  ],
+  "author": "Birgit Pohl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BirgitPohl/code-challenge-loan-widget/issues"
+  },
+  "homepage": "https://github.com/BirgitPohl/code-challenge-loan-widget#readme",
+  "devDependencies": {
+    "@vue/cli": "^3.11.0"
+  }
+}
