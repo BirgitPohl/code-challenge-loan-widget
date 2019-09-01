@@ -1,12 +1,12 @@
 <template>
   <div class="home">
-    <LoanCalculationWidget msg="Welcome to Your Vue.js + TypeScript App"/>
+    <LoanCalculationWidget/>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import LoanCalculationWidget from '@/components/LoanCalculationWidget.vue'; // @ is an alias to /src
+import LoanCalculationWidget from '@/components/LoanCalculationWidget.vue';
 
 @Component({
   components: {
