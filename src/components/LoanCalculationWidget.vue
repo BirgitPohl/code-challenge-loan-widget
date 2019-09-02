@@ -13,6 +13,8 @@
         <p v-for="error in errors" v-bind:key="error">{{ error }}</p>
     </div>
 
+    <div>Monthly Installment: {{ monthlyInstallment }}</div>
+
   </div>
 </template>
 
@@ -25,23 +27,24 @@
 
     // My scoped states
     private amount: string = '';
-    private duration: string = ''
+    private duration: string = '';
     private monthlyInstallment: number | null = null;
     private submitted: boolean = false;
-    private errors: Array<String> = [];
-    
+    private errors: string[] = [];
+
     // My scoped methods:
     protected post(): any {
-      // console.log(this.$store)
       this.$store.commit('SET_AMOUNT', this.amount);
       this.$store.commit('SET_DURATION', this.duration);
-      
+
       if (this.amount.length > 0 && this.duration.length > 0) {
 
-        this.$store.dispatch('fetch');
-        this.monthlyInstallment = this.$store.getters('SET_MONTHLYINSTALLMENT')
+        this.$store.dispatch('fetch').then(() => {
+          this.monthlyInstallment = this.$store.getters.getMonthlyInstallment;
+        });
 
         this.submitted = true;
+
       }
 
       if (this.amount.length <= 0) {
@@ -51,15 +54,12 @@
       if (this.duration.length <= 0) {
         this.errors.push('Duration is required.');
       }
-      // this.$http.post('./mocks/response.json', {
-      //     // this.amount,
-      //     // this.duration,
-      //   }).then((data: any): void => {
-      //     // console.log(data);
-      //     // this.submitted = true,
-      //   });
     }
-  }
+
+    protected storeMonthlyInstyallement() {
+      return this.$store.state.monthlyInstyallement;
+    }
+}
 </script>
 
 <style scoped lang="less">

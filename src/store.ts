@@ -4,11 +4,17 @@ import axios from 'axios';
 
 Vue.use(Vuex);
 
+
 export default new Vuex.Store({
   state: {
     amount: '',
     duration: '',
-    monstlyInstyallement: null,
+    monthlyInstallement: null,
+  },
+  getters: {
+    getMonthlyInstallment: (state) => {
+      return state.monthlyInstallement;
+    },
   },
   mutations: {
     SET_AMOUNT(state, amount) {
@@ -17,17 +23,15 @@ export default new Vuex.Store({
     SET_DURATION(state, duration) {
       state.duration = duration;
     },
-    SET_MONTHLYINSTALLMENT(state, monstlyInstyallement) {
-      state.monstlyInstyallement = monstlyInstyallement;
+    SET_MONTHLYINSTALLMENT(state, monthlyInstallement) {
+      state.monthlyInstallement = monthlyInstallement;
     },
   },
   actions: {
-    // something that goes to the api
     fetch(context) {
       // With great thanks to https://www.mocky.io/.  – Made with -love- beer.
       axios.get('http://www.mocky.io/v2/5d6d1b033000002b008fba39').then((response: any) => {
-        // https://jsonplaceholder.typicode.com/todos/1
-        context.commit('SET_MONTHLYINSTALLMENT', response.data.monstlyInstyallement);
+        context.commit('SET_MONTHLYINSTALLMENT', response.data.monthlyInstallment);
        });
     },
   },
