@@ -10,11 +10,15 @@ export default new Vuex.Store({
     amount: '',
     duration: '',
     monthlyInstallement: null,
+    // errorMessage: null,
   },
   getters: {
     getMonthlyInstallment: (state) => {
       return state.monthlyInstallement;
     },
+    // getErrorMessage: (state) => {
+    //   return state.errorMessage;
+    // }
   },
   mutations: {
     SET_AMOUNT(state, amount) {
@@ -26,12 +30,20 @@ export default new Vuex.Store({
     SET_MONTHLYINSTALLMENT(state, monthlyInstallement) {
       state.monthlyInstallement = monthlyInstallement;
     },
+    // SET_ERRORMESSAGE(state, errorMessage) {
+    //   state.errorMessage = errorMessage;
+    // }
   },
   actions: {
     fetch(context) {
-      // With great thanks to https://www.mocky.io/.  – Made with -love- beer.
+      // With great thanks to https://www.mocky.io/. – Made with -love- beer.
       axios.get('http://www.mocky.io/v2/5d6d1b033000002b008fba39').then((response: any) => {
         context.commit('SET_MONTHLYINSTALLMENT', response.data.monthlyInstallment);
+       }).catch((error) => {
+        // TODO Here could be a logger
+        // tslint:disable-next-line:no-console
+        console.log(error.message);
+        // context.commit('SET_ERRORMESSAGE', error.message);
        });
     },
   },
