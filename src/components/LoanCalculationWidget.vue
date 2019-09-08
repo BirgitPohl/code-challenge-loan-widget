@@ -13,7 +13,7 @@
     </form>
     <div v-if="submitted">Thank you for adding your request.</div>
     <div v-if="errors.length">
-      <p v-for="error in errors" v-bind:key="error">{{ error }}</p>
+      <p class="error" v-for="error in errors" v-bind:key="error">{{ error }}</p>
     </div>
 
     <div v-if="getMonthlyInstallment()">Monthly Installment: {{ getMonthlyInstallment() }}</div>
